@@ -1,0 +1,30 @@
+<%- include('header.ejs') %>
+    <%- include('menu.ejs') %>
+        <div class="container">
+            <h1 class="mt-5 mb-5 text-center text-grey"><b>Connexion à l'interface d'administration</b></h1>
+            <div class="row mt-5">
+                <div class="col-md-3">&nbsp;</div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">Connexion</div>
+                        <div class="card-body">
+                            <form method="post" action="/user/login">
+                                <div class="mb-3">
+                                    <label>Login</label>
+                                    <input type="text" name="user_login" class="form-control" />
+                                </div>
+                                <div class="mb-3">
+                                    <label>Mot de passe</label>
+                                    <input type="password" name="user_password" class="form-control" />
+                                </div>
+                                <div class="mb-3">
+                                    <input type="submit" class="btn btn-grey" value="Valider" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
