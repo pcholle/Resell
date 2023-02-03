@@ -8,6 +8,7 @@ var session = require('express-session')
 
 var viewRouter = require('./routes/view');
 var userRouter = require('./routes/user');
+var sneakerRouter = require('./routes/sneaker');
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', viewRouter);
 app.use('/user', userRouter);
+app.use('/sneaker', sneakerRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -43,7 +45,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('site/error');
 });
 
 module.exports = app;

@@ -1,19 +1,19 @@
 const { Sequelize } = require("sequelize");
 const db = require("../database");
 
-const User = db.define("User", {
-    User_id:{
+const Sneaker = db.define("Sneaker", {
+    Sneaker_id:{
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    User_login: {
+    Sneaker_titre: {
         type: Sequelize.STRING
     },
-    User_password: {
+    Sneaker_description: {
         type: Sequelize.STRING
     },
-    User_admin: {
+    Sneaker_sexe: {
         type: Sequelize.INTEGER
     }
 }, {

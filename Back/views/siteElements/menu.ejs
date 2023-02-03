@@ -19,18 +19,10 @@
             <li class="nav-item mx-3"><a href=# class=nav-link>Sneakers</a></li>
             <li class="nav-item mx-3"><a href=# class=nav-link>Nous connaitre</a></li>
             <%if (session.user) { %>
-                <li class="nav-item dropdown mx-3">
-                    <a class="nav-link dropdown-toggle" href="#" id="userCompte" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Bonjour <%= session.user.User_login %>
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="userCompte">
-                        <li><a class="dropdown-item" href=/user/logout>Se déconnecter</a></li>
-                    </ul>
-                </li>
-                <% }else{ %>
-                    <li class="nav-item mx-3"><a href=/login class=nav-link>Se connecter</a></li>
-                    <% } %>
+                <li class="nav-item mx-3"><a href=/user/dashboard class=nav-link>Dashboard</a></li>
+            <% }else{ %>
+                <li class="nav-item mx-3"><a href=/user/login class=nav-link>Se connecter</a></li>
+            <% } %>
         </ul>
     </div>
 </div>
