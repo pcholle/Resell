@@ -10,4 +10,5 @@ db.authenticate()
   .then(() => console.log('Database connected'))
   .catch(err => console.log("Erreur in database connection : "+err));
 
+
 module.exports = db;

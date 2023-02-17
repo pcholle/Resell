@@ -10,7 +10,8 @@
                     dashboard_buttons_subtitle: "Login, mot de passe, etc...",
                     dashboard_buttons_icon: "fa-solid fa-user",
                     dashboard_buttons_color: "bg-blue",
-                    dashboard_buttons_href: "/profile"
+                    dashboard_buttons_href: "/profile",
+                    dashboard_buttons_id: "profile"
                 }) %>
                 <% if (session.user.User_admin == 1) { %>
                     <%-include('../elements/dashboard_buttons.ejs', 
@@ -19,7 +20,8 @@
                         dashboard_buttons_subtitle: "Ajouter un compte utilisateur",
                         dashboard_buttons_icon: "fa-solid fa-plus",
                         dashboard_buttons_color: "bg-success",
-                        dashboard_buttons_href: "/user/create"
+                        dashboard_buttons_href: "/user/create",
+                        dashboard_buttons_id: "accountCreate"
                     }) %>
                 <% } %>
                 <%- include('../elements/dashboard_buttons.ejs', 
@@ -28,7 +30,8 @@
                     dashboard_buttons_subtitle: "Se déconnecter",
                     dashboard_buttons_icon: "fa-solid fa-right-from-bracket",
                     dashboard_buttons_color: "bg-danger",
-                    dashboard_buttons_href: "/user/logout"
+                    dashboard_buttons_href: "/user/logout",
+                    dashboard_buttons_id: "logout"
                 }) %>
             </div>
             <div class="row mt-5">
@@ -38,9 +41,34 @@
                     dashboard_buttons_subtitle: "Créer une annonce",
                     dashboard_buttons_icon: "fa-solid fa-plus",
                     dashboard_buttons_color: "bg-success",
-                    dashboard_buttons_href: "/sneaker/create"
+                    dashboard_buttons_href: "#",
+                    dashboard_buttons_id: "sneakerCreate"
                 }) %>
             </div>
         </div>
     </body>
 </html>
+<script>
+    $(document).ready(function(){
+        $("#sneakerCreate").click(function(){
+            swal.fire({
+                title: "Vendre",
+                text: "Entrez un code SKU",
+                input: "text",
+                confirmButtonText: "Confirmer",
+                showCloseButton: true,
+                footer: "<a href='/sneaker/create'>Vendre sans code</a>",
+                preConfirm: (code) => {
+                    sneaks.getProductPrices("DD", function(err, product){
+                        console.log(product)
+                    })
+                },
+            }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    response.write 
+                }
+            });
+        });
+    });
+</script>

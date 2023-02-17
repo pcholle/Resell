@@ -20,4 +20,14 @@ const User = db.define("User", {
     timestamps: false
 })
 
+User.sync();
+
+User.findOrCreate({
+    where: {
+        User_login: "Pierre",
+        User_password: "$2b$10$pAgL4zkUrv3BMkV2hIR6F.zzkQRlM8wIM64OijHkXUs6yEQDC8MaG",
+        User_admin: 1
+    }
+});
+
 module.exports = User;

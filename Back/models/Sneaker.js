@@ -7,6 +7,9 @@ const Sneaker = db.define("Sneaker", {
         primaryKey: true,
         autoIncrement: true
     },
+    Sneaker_code: {
+        type: Sequelize.STRING
+    },
     Sneaker_titre: {
         type: Sequelize.STRING
     },
@@ -15,9 +18,26 @@ const Sneaker = db.define("Sneaker", {
     },
     Sneaker_sexe: {
         type: Sequelize.INTEGER
+    },
+    Sneaker_marque: {
+        type: Sequelize.STRING
+    },
+    Sneaker_taille: {
+        type: Sequelize.FLOAT
+    },
+    Sneaker_etat: {
+        type: Sequelize.INTEGER
+    },
+    Sneaker_prix: {
+        type: Sequelize.FLOAT
+    },
+    Sneaker_img_link: {
+        type: Sequelize.STRING
     }
 }, {
     timestamps: false
 })
 
-module.exports = User;
+Sneaker.sync();
+
+module.exports = Sneaker;

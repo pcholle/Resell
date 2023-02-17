@@ -2,11 +2,13 @@ var express = require('express');
 var router = express.Router();
 
 //Base de données
-const database = require('../database')
 const User = require("../models/User")
 
 //Crypt password
 const bcrypt = require("bcrypt")
+
+const SneaksAPI = require('sneaks-api');
+const sneaks = new SneaksAPI();
 
 // Views
 router.get('/login', function(req, res, next) {
@@ -18,6 +20,9 @@ router.get('/create', checkUserSession, function(req, res, next) {
 });
 
 router.get('/dashboard', checkUserSession, function(req, res, next) {
+  sneaks.getProductPrices("FY2903", function(err, product){
+    console.log(product)
+  });
   res.render('user/dashboard', { title: 'Dashboard', session : req.session});
 });
 
