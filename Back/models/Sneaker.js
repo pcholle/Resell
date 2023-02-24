@@ -14,7 +14,7 @@ const Sneaker = db.define("Sneaker", {
         type: Sequelize.STRING
     },
     Sneaker_description: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
     },
     Sneaker_sexe: {
         type: Sequelize.INTEGER
@@ -33,6 +33,13 @@ const Sneaker = db.define("Sneaker", {
     },
     Sneaker_img_link: {
         type: Sequelize.STRING
+    },
+    Sneaker_Owner_id: {
+        type: Sequelize.INTEGER,
+        references: {
+            model: 'users',
+            key: 'User_id',
+        }
     }
 }, {
     timestamps: false

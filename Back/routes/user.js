@@ -7,9 +7,6 @@ const User = require("../models/User")
 //Crypt password
 const bcrypt = require("bcrypt")
 
-const SneaksAPI = require('sneaks-api');
-const sneaks = new SneaksAPI();
-
 // Views
 router.get('/login', function(req, res, next) {
   res.render('user/login', { title: 'Connexion', session : req.session});
@@ -20,10 +17,11 @@ router.get('/create', checkUserSession, function(req, res, next) {
 });
 
 router.get('/dashboard', checkUserSession, function(req, res, next) {
-  sneaks.getProductPrices("FY2903", function(err, product){
-    console.log(product)
-  });
   res.render('user/dashboard', { title: 'Dashboard', session : req.session});
+});
+
+router.get('/listing', checkUserSession, function(req, res, next) {
+  res.render('user/listing', { title: 'Mes paires', session : req.session});
 });
 
 // Back

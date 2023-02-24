@@ -44,6 +44,15 @@
                     dashboard_buttons_href: "#",
                     dashboard_buttons_id: "sneakerCreate"
                 }) %>
+                <%- include('../elements/dashboard_buttons.ejs', 
+                {
+                    dashboard_buttons_title: "Listing", 
+                    dashboard_buttons_subtitle: "Mes paires",
+                    dashboard_buttons_icon: "fa-solid fa-list",
+                    dashboard_buttons_color: "bg-blue",
+                    dashboard_buttons_href: "/user/listing",
+                    dashboard_buttons_id: "listing"
+                }) %>
             </div>
         </div>
     </body>
@@ -58,15 +67,10 @@
                 confirmButtonText: "Confirmer",
                 showCloseButton: true,
                 footer: "<a href='/sneaker/create'>Vendre sans code</a>",
-                preConfirm: (code) => {
-                    sneaks.getProductPrices("DD", function(err, product){
-                        console.log(product)
-                    })
-                },
             }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
-                    response.write 
+                    location.href="/sneaker/create?sku="+result.value
                 }
             });
         });
