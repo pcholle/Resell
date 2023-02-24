@@ -19,7 +19,7 @@ router.get('/create', checkUserSession, function(req, res, next) {
             sneakerDetail.code = "";
             sneakerDetail.name = "";
             sneakerDetail.description = "";
-            sneakerDetail.image = "";
+            sneakerDetail.image = "/images/sneakers/default/sneaker_default.png";
             sneakerDetail.prixAchat = "";
             sneakerDetail.prixVentes = "";
         }else{

@@ -119,6 +119,10 @@ body{background-color: var(--body-bg);}
 
 
 /* Card Sneakers */
+.product-item-border {
+  background-color: transparent;
+  border: 1px solid #A8DADC;
+}
 .product-item {
   background-color: #F7F8F9;
   border-radius: 30px;
@@ -253,4 +257,24 @@ body{background-color: var(--body-bg);}
   -moz-transform: translate(0, 0);
   -ms-transform: translate(0, 0);
   -o-transform: translate(0, 0);
+}
+
+.product-item .info-btn-wishlist {
+  background-color: #FF5A5A;
+  border: none;
+  border-radius: 50%;
+  color: #FFFFFF;
+  display: inline-block;
+  font-size: 20px;
+  height: 45px;
+  line-height: 47px;
+  position: absolute;
+  right: 1px;
+  text-align: center;
+  top: 13px;
+  width: 45px;
+}
+
+.product-item .info-btn-wishlist i {
+  transition: all 0.8s ease 0s;
 }

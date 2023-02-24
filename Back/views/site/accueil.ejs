@@ -5,7 +5,7 @@
             <h1 class="mt-5 mb-5 text-center text-primary"><b>Nos dernières sorties</b></h1>
             <div class="row justify-content-md-center">
                 <% for(var i = 0; i < listSneakers.length; i++) { %>
-                    <%- include('../elements/sneaker_card.ejs', {sneaker: listSneakers[i]}) %>
+                    <%- include('../elements/sneaker_card.ejs', {sneaker: listSneakers[i], showSellButton: false}) %>
                 <% } %>      
             </div>
         </div>

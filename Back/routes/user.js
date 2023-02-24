@@ -3,6 +3,8 @@ var router = express.Router();
 
 //Base de données
 const User = require("../models/User")
+const Sneaker = require("../models/Sneaker")
+
 
 //Crypt password
 const bcrypt = require("bcrypt")
@@ -20,8 +22,14 @@ router.get('/dashboard', checkUserSession, function(req, res, next) {
   res.render('user/dashboard', { title: 'Dashboard', session : req.session});
 });
 
-router.get('/listing', checkUserSession, function(req, res, next) {
-  res.render('user/listing', { title: 'Mes paires', session : req.session});
+router.get('/listing', checkUserSession, async function(req, res, next) {
+  var listSneakers = await Sneaker.findAll({
+    where: {
+      Sneaker_Owner_id: req.session.user.User_id
+    },
+    order: [['Sneaker_id', 'DESC']]
+  })
+  res.render('user/listing', { title: 'Mes paires', session : req.session, listSneakers: listSneakers});
 });
 
 // Back
