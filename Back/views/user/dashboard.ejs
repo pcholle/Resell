@@ -1,0 +1,78 @@
+<%- include('../siteElements/header.ejs') %>
+    <body>
+        <%- include('../siteElements/menu.ejs') %>
+        <div class="container container-fluid">
+            <h1 class="mt-5 mb-5 text-center"><b>Bonjour <%= session.user.User_login %></b></h1>
+            <div class="row mt-5">
+                <%- include('../elements/dashboard_buttons.ejs', 
+                {
+                    dashboard_buttons_title: "Gérer mon profil", 
+                    dashboard_buttons_subtitle: "Login, mot de passe, etc...",
+                    dashboard_buttons_icon: "fa-solid fa-user",
+                    dashboard_buttons_color: "bg-blue",
+                    dashboard_buttons_href: "/profile",
+                    dashboard_buttons_id: "profile"
+                }) %>
+                <% if (session.user.User_admin == 1) { %>
+                    <%-include('../elements/dashboard_buttons.ejs', 
+                    {
+                        dashboard_buttons_title: "Créer un compte", 
+                        dashboard_buttons_subtitle: "Ajouter un compte utilisateur",
+                        dashboard_buttons_icon: "fa-solid fa-plus",
+                        dashboard_buttons_color: "bg-success",
+                        dashboard_buttons_href: "/user/create",
+                        dashboard_buttons_id: "accountCreate"
+                    }) %>
+                <% } %>
+                <%- include('../elements/dashboard_buttons.ejs', 
+                {
+                    dashboard_buttons_title: "Déconnexion", 
+                    dashboard_buttons_subtitle: "Se déconnecter",
+                    dashboard_buttons_icon: "fa-solid fa-right-from-bracket",
+                    dashboard_buttons_color: "bg-danger",
+                    dashboard_buttons_href: "/user/logout",
+                    dashboard_buttons_id: "logout"
+                }) %>
+            </div>
+            <div class="row mt-5">
+                <%- include('../elements/dashboard_buttons.ejs', 
+                {
+                    dashboard_buttons_title: "Vendre", 
+                    dashboard_buttons_subtitle: "Créer une annonce",
+                    dashboard_buttons_icon: "fa-solid fa-plus",
+                    dashboard_buttons_color: "bg-success",
+                    dashboard_buttons_href: "#",
+                    dashboard_buttons_id: "sneakerCreate"
+                }) %>
+                <%- include('../elements/dashboard_buttons.ejs', 
+                {
+                    dashboard_buttons_title: "Listing", 
+                    dashboard_buttons_subtitle: "Mes paires",
+                    dashboard_buttons_icon: "fa-solid fa-list",
+                    dashboard_buttons_color: "bg-blue",
+                    dashboard_buttons_href: "/user/listing",
+                    dashboard_buttons_id: "listing"
+                }) %>
+            </div>
+        </div>
+    </body>
+</html>
+<script>
+    $(document).ready(function(){
+        $("#sneakerCreate").click(function(){
+            swal.fire({
+                title: "Vendre",
+                text: "Entrez un code SKU",
+                input: "text",
+                confirmButtonText: "Confirmer",
+                showCloseButton: true,
+                footer: "<a href='/sneaker/create'>Vendre sans code</a>",
+            }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    location.href="/sneaker/create?sku="+result.value
+                }
+            });
+        });
+    });
+</script>
